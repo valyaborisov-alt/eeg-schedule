@@ -28,3 +28,16 @@
   margin-top:3px!important;min-width:50px!important;
   padding:0 8px!important;
 }
+
+/* End page exactly after the night block */
+html,body{min-height:0}
+body{padding-bottom:0!important}
+main{padding-bottom:0!important;margin-bottom:0!important}
+#calendar{margin-bottom:0!important;padding-bottom:0!important}
+.mobileWeek,.mobileNight,.nightrow{margin-bottom:0!important}
+@media(max-width:700px){
+  main{padding-bottom:0!important}
+  .mobileNight{margin-bottom:0!important}
+  .event.editing{margin-bottom:0!important}
+  body{padding-bottom:0!important}
+}
