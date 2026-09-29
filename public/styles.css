@@ -47,3 +47,6 @@ main{padding-bottom:0!important;margin-bottom:0!important}
   .weekDesktop{overflow-x:auto!important;overflow-y:visible!important;height:auto!important;max-height:none!important}
   body{overflow-y:auto!important}
 }
+
+/* Day view: breathing room above the first 08:00 tick */
+.dayView .time,.dayView .daycol{margin-top:10px}
