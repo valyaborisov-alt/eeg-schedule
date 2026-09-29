@@ -66,3 +66,20 @@ main{padding-bottom:0!important;margin-bottom:0!important}
   html{height:auto!important;min-height:100%!important;overflow-y:auto!important}
   body{height:auto!important;min-height:100%!important;overflow-y:auto!important}
 }
+
+/* Correct desktop weekly grid: 7 days × 2 rooms */
+@media(min-width:701px){
+  .weekTwoRooms{
+    display:grid!important;
+    grid-template-columns:64px repeat(14,minmax(88px,1fr))!important;
+    min-width:1320px!important;
+    align-items:start;
+  }
+  .weekTwoRooms>.time{grid-column:1;grid-row:2}
+  .weekTwoRooms>.daycol{grid-row:2}
+  .dayHead{padding:8px 5px;text-align:center;font-weight:700;background:#f8fafc;border-right:1px solid var(--line)}
+  .dayHead select{width:100%;margin:5px 0}
+  .roomLabels{display:grid;grid-template-columns:1fr 1fr;gap:2px;color:var(--muted);font-size:10px;font-weight:600}
+  .nightTwoRooms{display:grid!important;grid-template-columns:64px repeat(7,minmax(176px,1fr))!important;min-width:1320px!important}
+  .weekDesktop{height:auto!important;overflow-x:auto!important;overflow-y:visible!important}
+}
