@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Release tested staging main to production",
-  "trigger": 1
+  "note": "Production release retry after build rate limit",
+  "trigger": 2
 }
