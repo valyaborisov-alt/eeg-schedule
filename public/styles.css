@@ -41,16 +41,3 @@ main{padding-bottom:0!important;margin-bottom:0!important}
   .event.editing{margin-bottom:0!important}
   body{padding-bottom:0!important}
 }
-
-/* Desktop: keep the page within viewport; scroll daytime grid internally */
-@media(min-width:701px){
-  html,body{height:100%;overflow:hidden}
-  body{display:flex;flex-direction:column}
-  header{flex:0 0 auto}
-  .toolbar{flex:0 0 auto}
-  main{flex:1 1 auto;min-height:0;overflow:hidden;display:flex;flex-direction:column}
-  #calendar{flex:1 1 auto;min-height:0;overflow:hidden;display:flex;flex-direction:column}
-  .weekDesktop{flex:1 1 auto;min-height:0;overflow:auto}
-  .weekDesktop .week{min-height:1008px}
-  .nightrow{flex:0 0 auto;position:sticky;bottom:0;z-index:12}
-}
