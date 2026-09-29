@@ -187,3 +187,11 @@
 .monthRoomLabel{display:block;margin:4px 1px 2px;font-size:9px;font-weight:800;line-height:1;color:var(--muted)}
 .monthRoomLabel.roomLabel1{color:#287f8f}
 .monthRoomLabel.roomLabel2{color:#675ca8}
+
+/* Month fit-to-content mode */
+.monthFitToggle{display:inline-flex!important;flex-direction:row!important;align-items:center!important;gap:6px!important;margin-left:12px!important;vertical-align:middle;font-size:12px;font-weight:500;color:var(--muted);white-space:nowrap}
+.monthFitToggle input{width:16px!important;height:16px!important;margin:0!important;flex:0 0 16px}
+.monthScroll{width:100%;overflow-x:auto;overflow-y:visible}
+.monthScroll.windowFit .month{width:100%;min-width:0}
+.monthScroll.contentFit .month{width:max-content;min-width:max-content;grid-template-columns:repeat(7,minmax(190px,max-content))}
+@media(max-width:700px){.monthFitToggle{margin-left:7px!important;font-size:10px}.monthScroll.contentFit .month{grid-template-columns:repeat(7,minmax(165px,max-content))}}
