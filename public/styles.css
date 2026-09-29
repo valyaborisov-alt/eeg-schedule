@@ -83,3 +83,12 @@ main{padding-bottom:0!important;margin-bottom:0!important}
   .nightTwoRooms{display:grid!important;grid-template-columns:64px repeat(7,minmax(176px,1fr))!important;min-width:1320px!important}
   .weekDesktop{height:auto!important;overflow-x:auto!important;overflow-y:visible!important}
 }
+
+/* Desktop week day width resize */
+@media(min-width:701px){
+  .dayHead{position:relative}
+  .dayResize{position:absolute;top:0;right:-5px;width:10px;height:100%;cursor:col-resize;z-index:20;touch-action:none}
+  .dayResize:after{content:"";position:absolute;top:18%;bottom:18%;left:4px;width:2px;border-radius:2px;background:#b9c7d7;opacity:.35}
+  .dayResize:hover:after,.dayResize:active:after{background:#2f6feb;opacity:1}
+  .dayHead>b{text-transform:capitalize;white-space:nowrap}
+}
