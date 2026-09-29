@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Hotfix Vercel Google OAuth fallback",
-  "trigger": 4
+  "note": "Deploy Vercel persistent Google OAuth API",
+  "trigger": 5
 }
