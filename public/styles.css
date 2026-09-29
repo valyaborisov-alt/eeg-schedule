@@ -29,128 +29,34 @@
   padding:0 8px!important;
 }
 
-/* End page exactly after the night block */
-html,body{min-height:0}
-body{padding-bottom:0!important}
-main{padding-bottom:0!important;margin-bottom:0!important}
-#calendar{margin-bottom:0!important;padding-bottom:0!important}
-.mobileWeek,.mobileNight,.nightrow{margin-bottom:0!important}
-@media(max-width:700px){
-  main{padding-bottom:0!important}
-  .mobileNight{margin-bottom:0!important}
-  .event.editing{margin-bottom:0!important}
-  body{padding-bottom:0!important}
-}
 
-/* Desktop weekly view: one vertical scroll only (the page), horizontal scroll stays in calendar */
-@media(min-width:701px){
-  .weekDesktop{overflow-x:auto!important;overflow-y:visible!important;height:auto!important;max-height:none!important}
-  body{overflow-y:auto!important}
-}
-
-/* Day view: breathing room above the first 08:00 tick */
+/* Day view */
 .dayView .time,.dayView .daycol{margin-top:10px}
 
-/* Weekly desktop: natural content height, body is the only vertical scroller */
-@media(min-width:701px){
-  .weekDesktop{
-    display:block!important;
-    height:max-content!important;
-    min-height:0!important;
-    max-height:none!important;
-    overflow-x:auto!important;
-    overflow-y:clip!important;
-  }
-  .weekDesktop>.week,.weekDesktop>.nightrow{position:relative}
-  #calendar,main{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important}
-  html{height:auto!important;min-height:100%!important;overflow-y:auto!important}
-  body{height:auto!important;min-height:100%!important;overflow-y:auto!important}
-}
+/* Weekly controls */
+.weekFitToggle{display:inline-flex;align-items:center;gap:6px;width:auto;margin:0 0 8px 2px;font-size:12px;color:var(--muted);user-select:none}
+.weekFitToggle input{flex:0 0 16px;width:16px;height:16px;margin:0}
+.dayHead{position:relative;padding:8px 5px;text-align:center;font-weight:700;background:#f8fafc;border-right:1px solid var(--line)}
+.dayHead select{width:100%;margin:5px 0}
+.dayHead>b{text-transform:capitalize;white-space:nowrap}
+.roomLabels{display:grid;grid-template-columns:1fr 1fr;gap:2px;color:var(--muted);font-size:10px;font-weight:600}
+.dayResize{position:absolute;top:0;right:-7px;width:14px;height:100%;cursor:col-resize;z-index:20;touch-action:none}
+.dayResize:after{content:"";position:absolute;top:18%;bottom:18%;left:6px;width:2px;border-radius:2px;background:#b9c7d7;opacity:.35}
+.dayResize:hover:after,.dayResize:active:after{background:#2f6feb;opacity:1}
 
-/* Correct desktop weekly grid: 7 days × 2 rooms */
+/* Desktop week: one vertical page scroll + persistent viewport-bottom horizontal scrollbar */
 @media(min-width:701px){
-  .weekTwoRooms{
-    display:grid!important;
-    grid-template-columns:64px repeat(14,minmax(88px,1fr));
-    min-width:1320px!important;
-    align-items:start;
-  }
+  html,body{height:auto;min-height:0;overflow-x:hidden;overflow-y:auto}
+  body{padding-bottom:0!important}
+  main,#calendar{height:auto;min-height:0;max-height:none;overflow:visible;padding-bottom:0!important;margin-bottom:0!important}
+  .weekDesktop{display:block;width:100%;height:auto;min-height:0;max-height:none;overflow-x:hidden!important;overflow-y:visible!important;margin-bottom:0}
+  .weekTwoRooms{display:grid;grid-template-columns:64px repeat(14,minmax(0,1fr));width:100%;min-width:0;align-items:start}
   .weekTwoRooms>.time{grid-column:1;grid-row:2}
   .weekTwoRooms>.daycol{grid-row:2}
-  .dayHead{padding:8px 5px;text-align:center;font-weight:700;background:#f8fafc;border-right:1px solid var(--line)}
-  .dayHead select{width:100%;margin:5px 0}
-  .roomLabels{display:grid;grid-template-columns:1fr 1fr;gap:2px;color:var(--muted);font-size:10px;font-weight:600}
-  .nightTwoRooms{display:grid!important;grid-template-columns:64px repeat(7,minmax(176px,1fr));min-width:1320px!important}
-  .weekDesktop{height:auto!important;overflow-x:auto!important;overflow-y:visible!important}
-}
-
-/* Desktop week day width resize */
-@media(min-width:701px){
-  .dayHead{position:relative}
-  .dayResize{position:absolute;top:0;right:-5px;width:10px;height:100%;cursor:col-resize;z-index:20;touch-action:none}
-  .dayResize:after{content:"";position:absolute;top:18%;bottom:18%;left:4px;width:2px;border-radius:2px;background:#b9c7d7;opacity:.35}
-  .dayResize:hover:after,.dayResize:active:after{background:#2f6feb;opacity:1}
-  .dayHead>b{text-transform:capitalize;white-space:nowrap}
-}
-
-@media(min-width:701px){
-  .dayResize{right:-7px;width:14px}
-  .dayResize:after{left:6px}
-}
-
-/* Weekly width modes */
-.weekFitToggle{display:flex;flex-direction:row;align-items:center;gap:7px;width:max-content;margin:0 0 8px 2px;font-size:12px;color:var(--muted);user-select:none}
-.weekFitToggle input{width:16px;height:16px;margin:0}
-@media(min-width:701px){
-  .weekDesktop{width:100%;overflow-x:auto!important;overflow-y:visible!important}
-  .weekDesktop.windowFit .weekTwoRooms,.weekDesktop.windowFit .nightTwoRooms{width:100%!important;min-width:0!important}
-  .weekDesktop.contentFit .weekTwoRooms,.weekDesktop.contentFit .nightTwoRooms{width:max-content!important;min-width:max-content!important}
-  .weekDesktop.contentFit{overflow-x:auto!important}
-}
-@media(max-width:700px){.weekFitToggle{display:none}}
-
-/* Compact fit toggle and guaranteed horizontal scrollbar */
-.weekFitToggle{
-  display:inline-flex!important;
-  flex-direction:row!important;
-  align-items:center!important;
-  justify-content:flex-start!important;
-  gap:6px!important;
-  width:auto!important;
-  max-width:max-content!important;
-  margin:0 0 8px 2px!important;
-}
-.weekFitToggle input[type="checkbox"]{
-  display:inline-block!important;
-  flex:0 0 16px!important;
-  width:16px!important;height:16px!important;
-  margin:0!important;padding:0!important;
-}
-@media(min-width:701px){
-  .weekDesktop{display:block!important;width:100%!important;max-width:100%!important;overflow-x:scroll!important;overflow-y:visible!important}
-  .weekDesktop.contentFit .weekTwoRooms,.weekDesktop.contentFit .nightTwoRooms{width:auto;max-width:none!important}
-}
-
-/* Horizontal week scrollbar pinned to bottom of viewport */
-@media(min-width:701px){
-  .weekDesktop{scrollbar-width:none!important}
-  .weekDesktop::-webkit-scrollbar{height:0!important}
-  .weekBottomScroll{
-    position:fixed;
-    left:22px;right:22px;bottom:0;
-    height:17px;
-    overflow-x:auto;overflow-y:hidden;
-    z-index:100;
-    background:#f4f7fb;
-    border-top:1px solid #dbe4ee;
-    display:none;
-  }
+  .nightTwoRooms{display:grid;grid-template-columns:64px repeat(7,minmax(0,1fr));width:100%;min-width:0;margin-bottom:0!important}
+  .weekDesktop.contentFit .weekTwoRooms,.weekDesktop.contentFit .nightTwoRooms{max-width:none}
+  .weekBottomScroll{display:none;position:fixed;left:22px;right:22px;bottom:0;height:18px;overflow-x:scroll;overflow-y:hidden;z-index:1000;background:#f4f7fb;border-top:1px solid #dbe4ee}
+  .weekBottomScroll.active{display:block}
   .weekBottomScrollInner{height:1px}
-  body{padding-bottom:17px!important}
 }
-@media(max-width:700px){.weekBottomScroll{display:none!important}}
-
-@media(min-width:701px){
-  .weekBottomScroll{display:none!important}
-  .weekBottomScroll.active{display:block!important;position:fixed!important;left:22px!important;right:22px!important;bottom:0!important;z-index:1000!important}
-}
+@media(max-width:700px){.weekFitToggle,.weekBottomScroll{display:none!important}}
