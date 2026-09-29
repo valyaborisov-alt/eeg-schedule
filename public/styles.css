@@ -41,3 +41,9 @@ main{padding-bottom:0!important;margin-bottom:0!important}
   .event.editing{margin-bottom:0!important}
   body{padding-bottom:0!important}
 }
+
+/* Desktop weekly view: one vertical scroll only (the page), horizontal scroll stays in calendar */
+@media(min-width:701px){
+  .weekDesktop{overflow-x:auto!important;overflow-y:visible!important;height:auto!important;max-height:none!important}
+  body{overflow-y:auto!important}
+}
