@@ -69,3 +69,13 @@
   .mobileWeek{display:block!important}
   .weekFitToggle{display:none!important}
 }
+
+.weekFitToggle{
+  display:inline-flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:6px!important;
+  white-space:nowrap!important;
+}
+.weekFitToggle input[type="checkbox"]{order:0!important}
