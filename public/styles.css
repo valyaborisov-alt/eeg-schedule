@@ -416,3 +416,32 @@
 :root[data-theme="dark"] dialog form{background:#1a2029!important;color:#e7edf5!important}
 :root[data-theme="dark"] .monthFitToggle,
 :root[data-theme="dark"] .weekFitToggle{color:#aeb9c7!important}
+
+/* Force complete dark background for day/week timetable */
+:root[data-theme="dark"] .weekDesktop,
+:root[data-theme="dark"] .weekTwoRooms,
+:root[data-theme="dark"] .dayView,
+:root[data-theme="dark"] .mobileWeek,
+:root[data-theme="dark"] .mobileSchedule,
+:root[data-theme="dark"] .week .time,
+:root[data-theme="dark"] .dayView .time,
+:root[data-theme="dark"] .mobileSchedule .time{
+  background:#1a2029!important;
+}
+:root[data-theme="dark"] .week .daycol,
+:root[data-theme="dark"] .dayView .daycol,
+:root[data-theme="dark"] .mobileSchedule .daycol,
+:root[data-theme="dark"] .weekTwoRooms .daycol{
+  background-color:#1a2029!important;
+  background-image:repeating-linear-gradient(to bottom,#1a2029 0,#1a2029 calc(var(--slot) - 1px),#303947 calc(var(--slot) - 1px),#303947 var(--slot))!important;
+}
+:root[data-theme="dark"] .slot{
+  background:transparent!important;
+  border-color:#303947!important;
+}
+:root[data-theme="dark"] .week,
+:root[data-theme="dark"] .dayView,
+:root[data-theme="dark"] .mobileSchedule{
+  border-color:#303947!important;
+  box-shadow:none!important;
+}
