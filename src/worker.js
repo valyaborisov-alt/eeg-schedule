@@ -1,13 +1,5 @@
 export default {
   async fetch(request, env) {
-    const response = await env.ASSETS.fetch(request);
-    const headers = new Headers(response.headers);
-    headers.set('Cross-Origin-Opener-Policy', 'same-origin-allow-popups');
-    headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-    return new Response(response.body, {
-      status: response.status,
-      statusText: response.statusText,
-      headers
-    });
+    return env.ASSETS.fetch(request);
   }
 };
