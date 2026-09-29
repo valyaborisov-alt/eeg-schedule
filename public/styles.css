@@ -108,3 +108,25 @@ main{padding-bottom:0!important;margin-bottom:0!important}
   .weekDesktop.contentFit{overflow-x:auto!important}
 }
 @media(max-width:700px){.weekFitToggle{display:none}}
+
+/* Compact fit toggle and guaranteed horizontal scrollbar */
+.weekFitToggle{
+  display:inline-flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:6px!important;
+  width:auto!important;
+  max-width:max-content!important;
+  margin:0 0 8px 2px!important;
+}
+.weekFitToggle input[type="checkbox"]{
+  display:inline-block!important;
+  flex:0 0 16px!important;
+  width:16px!important;height:16px!important;
+  margin:0!important;padding:0!important;
+}
+@media(min-width:701px){
+  .weekDesktop{display:block!important;width:100%!important;max-width:100%!important;overflow-x:scroll!important;overflow-y:visible!important}
+  .weekDesktop.contentFit .weekTwoRooms,.weekDesktop.contentFit .nightTwoRooms{width:auto;max-width:none!important}
+}
