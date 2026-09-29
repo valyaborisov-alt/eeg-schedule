@@ -304,3 +304,9 @@
 .calendarFlash{outline:3px solid currentColor!important;outline-offset:2px;animation:calendarFlash 1.8s ease}
 @keyframes calendarFlash{0%,100%{filter:none}25%,75%{filter:brightness(1.45)}}
 .reportTable th:last-child,.reportTable td:last-child{padding-left:5px;padding-right:5px;text-align:center}
+
+/* Two-row night duration / PSG selector */
+.nightHourChoices{display:grid!important;grid-template-columns:repeat(3,22px)!important;grid-template-rows:repeat(2,19px);gap:2px!important;flex:0 0 70px!important;align-content:center}
+.nightHourBtn{width:22px!important;height:19px!important;min-width:22px!important;line-height:17px!important}
+.nightHourBtn.psgBtn{font-size:8px!important;background:#5bbce633!important;border-color:#7bd2f5!important;color:#bfeeff!important}
+.nightHourBtn.psgBtn.selected{background:#6ecdf2!important;border-color:#9ee3ff!important;color:#07384b!important}
