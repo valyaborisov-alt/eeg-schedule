@@ -71,7 +71,7 @@ main{padding-bottom:0!important;margin-bottom:0!important}
 @media(min-width:701px){
   .weekTwoRooms{
     display:grid!important;
-    grid-template-columns:64px repeat(14,minmax(88px,1fr))!important;
+    grid-template-columns:64px repeat(14,minmax(88px,1fr));
     min-width:1320px!important;
     align-items:start;
   }
@@ -80,7 +80,7 @@ main{padding-bottom:0!important;margin-bottom:0!important}
   .dayHead{padding:8px 5px;text-align:center;font-weight:700;background:#f8fafc;border-right:1px solid var(--line)}
   .dayHead select{width:100%;margin:5px 0}
   .roomLabels{display:grid;grid-template-columns:1fr 1fr;gap:2px;color:var(--muted);font-size:10px;font-weight:600}
-  .nightTwoRooms{display:grid!important;grid-template-columns:64px repeat(7,minmax(176px,1fr))!important;min-width:1320px!important}
+  .nightTwoRooms{display:grid!important;grid-template-columns:64px repeat(7,minmax(176px,1fr));min-width:1320px!important}
   .weekDesktop{height:auto!important;overflow-x:auto!important;overflow-y:visible!important}
 }
 
@@ -91,4 +91,9 @@ main{padding-bottom:0!important;margin-bottom:0!important}
   .dayResize:after{content:"";position:absolute;top:18%;bottom:18%;left:4px;width:2px;border-radius:2px;background:#b9c7d7;opacity:.35}
   .dayResize:hover:after,.dayResize:active:after{background:#2f6feb;opacity:1}
   .dayHead>b{text-transform:capitalize;white-space:nowrap}
+}
+
+@media(min-width:701px){
+  .dayResize{right:-7px;width:14px}
+  .dayResize:after{left:6px}
 }
