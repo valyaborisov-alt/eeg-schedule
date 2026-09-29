@@ -79,3 +79,11 @@
   white-space:nowrap!important;
 }
 .weekFitToggle input[type="checkbox"]{order:0!important}
+
+/* Room identity colors; user-selected color is marker only */
+.event.room1{background:#287f8f!important;color:#fff}
+.event.room2{background:#675ca8!important;color:#fff}
+.event .colorMark{position:absolute;left:0;top:5px;bottom:5px;width:5px;border-radius:0 4px 4px 0;z-index:2;box-shadow:0 0 0 1px #ffffff55}
+.event .eventBody{padding-left:7px}
+.daycol[data-room="1"]{background-color:#f7fcfd}
+.daycol[data-room="2"]{background-color:#faf8ff}
