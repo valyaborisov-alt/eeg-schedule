@@ -139,3 +139,13 @@
   padding:0!important;
 }
 .event .quickEdit:hover{opacity:1}
+
+/* Night room identity follows cabinet colors */
+.night .nightRoom.room1{background:#287f8f!important;color:#fff;border-color:#287f8f!important}
+.night .nightRoom.room2{background:#675ca8!important;color:#fff;border-color:#675ca8!important}
+.night .nightRoom b{color:inherit}
+.night .nightRoom:hover{filter:brightness(1.06)}
+.dayNurse{display:flex;align-items:center;gap:10px;margin:0 0 8px 64px;padding:7px 10px;border:1px solid var(--line);border-radius:9px;background:#f8fafc;width:max-content;max-width:calc(100% - 64px)}
+.dayNurse span{font-size:12px;font-weight:700;color:var(--muted);white-space:nowrap}
+.dayNurse select{min-width:180px}
+@media(max-width:700px){.dayNurse{margin-left:0;max-width:100%;width:100%;justify-content:space-between}.dayNurse select{min-width:0;flex:1}}
