@@ -5,3 +5,4 @@ Last manual deployment trigger: 2026-09-29.
 This file exists only to trigger Cloudflare Workers Builds after reconnecting the GitHub repository.
 
 Build token configured; deployment retriggered 2026-09-29.
+Staging refresh: current main for Cloudflare testing.
