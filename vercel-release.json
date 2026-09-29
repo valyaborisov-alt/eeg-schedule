@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Retry persistent OAuth release after rate limit",
-  "trigger": 7
+  "note": "Retry Vercel OAuth API release",
+  "trigger": 8
 }
