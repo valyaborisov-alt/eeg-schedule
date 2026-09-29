@@ -128,3 +128,14 @@
   .event.editing .bottomHandle{height:34px!important;min-width:132px!important;bottom:-18px!important}
   .event.editing .bottomHandle:before{left:-28px;right:-28px;top:-16px;bottom:-18px}
 }
+
+/* Pencil is an icon-only inline-edit trigger */
+.event .quickEdit,.event .quickEdit:hover,.event .quickEdit:active{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  color:inherit!important;
+  opacity:.72;
+  padding:0!important;
+}
+.event .quickEdit:hover{opacity:1}
