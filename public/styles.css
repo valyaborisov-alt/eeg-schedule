@@ -310,3 +310,47 @@
 .nightHourBtn{width:22px!important;height:19px!important;min-width:22px!important;line-height:17px!important}
 .nightHourBtn.psgBtn{font-size:8px!important;background:#5bbce633!important;border-color:#7bd2f5!important;color:#bfeeff!important}
 .nightHourBtn.psgBtn.selected{background:#6ecdf2!important;border-color:#9ee3ff!important;color:#07384b!important}
+
+/* Dark theme */
+:root[data-theme="dark"]{
+  --bg:#11151b;
+  --card:#1a2029;
+  --line:#303947;
+  --text:#e7edf5;
+  --muted:#9ba8b8;
+}
+:root[data-theme="dark"] body{background:#11151b;color:#e7edf5}
+:root[data-theme="dark"] header,
+:root[data-theme="dark"] .toolbar,
+:root[data-theme="dark"] dialog,
+:root[data-theme="dark"] .reportView section,
+:root[data-theme="dark"] .nurseSummary{background:#1a2029;color:#e7edf5;border-color:#303947}
+:root[data-theme="dark"] button,
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] select,
+:root[data-theme="dark"] textarea{background:#222a35;color:#e7edf5;border-color:#3a4656}
+:root[data-theme="dark"] button:hover{background:#2c3643}
+:root[data-theme="dark"] nav button.active,
+:root[data-theme="dark"] button.primary{background:#376b82;color:#fff}
+:root[data-theme="dark"] .slot,
+:root[data-theme="dark"] .daycol,
+:root[data-theme="dark"] .dayHead,
+:root[data-theme="dark"] .head,
+:root[data-theme="dark"] .month>div{border-color:#303947}
+:root[data-theme="dark"] .dayHead,
+:root[data-theme="dark"] .head,
+:root[data-theme="dark"] .reportTable th{background:#202731;color:#dbe4ef}
+:root[data-theme="dark"] .reportTable td,
+:root[data-theme="dark"] .reportTable th,
+:root[data-theme="dark"] .nurseSummary td,
+:root[data-theme="dark"] .nurseSummary th{border-color:#303947}
+:root[data-theme="dark"] .reportRow:hover td{background:#222b36}
+:root[data-theme="dark"] .reportView h3 span{background:#2b3542;color:#b7c3d1}
+:root[data-theme="dark"] .muted{color:#697789}
+:root[data-theme="dark"] .monthNight,
+:root[data-theme="dark"] .nightrow,
+:root[data-theme="dark"] .nightRoom{background:#151b24}
+:root[data-theme="dark"] .weekBottomScroll{background:#11151b}
+:root[data-theme="dark"] ::-webkit-scrollbar-track{background:#151a21}
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb{background:#465363;border-radius:8px}
+#themeBtn{min-width:36px;font-size:17px}
