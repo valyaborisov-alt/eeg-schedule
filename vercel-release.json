@@ -1,5 +1,5 @@
 {
-  "release": "2026-09-29",
+  "release": "2026-09-29-evening",
   "purpose": "Trigger Vercel production deployment from current main",
   "features": [
     "long-press edit mode",
@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Production release retry after build rate limit",
-  "trigger": 2
+  "note": "Release latest staging: report, night hours PSG, dark theme, three-day desktop view",
+  "trigger": 3
 }
