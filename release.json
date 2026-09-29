@@ -1,0 +1,8 @@
+{
+  "release": "2026-09-29-mobile-resize-v2",
+  "features": [
+    "stable pointer-based mobile duration resize",
+    "wide labeled resize handle",
+    "single render after gesture"
+  ]
+}
