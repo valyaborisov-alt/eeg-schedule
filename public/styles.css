@@ -178,3 +178,8 @@
 .monthRoomTitle{display:block;font-size:9px;font-weight:800;margin:0 2px 2px;color:var(--muted)}
 .monthRoom .chip{margin:2px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media(max-width:700px){.monthRooms{grid-template-columns:1fr}.monthRoomTitle{font-size:8px}}
+
+/* Compact month cells: room 1 events first, room 2 below; color only */
+.month .monthRooms{display:block!important}
+.month .monthRoom,.month .monthRoomTitle{display:none!important}
+.month .monthRooms .chip{display:block;margin:2px 0;border:0!important;border-radius:5px;padding-top:3px;padding-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
