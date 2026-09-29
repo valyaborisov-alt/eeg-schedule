@@ -354,3 +354,44 @@
 :root[data-theme="dark"] ::-webkit-scrollbar-track{background:#151a21}
 :root[data-theme="dark"] ::-webkit-scrollbar-thumb{background:#465363;border-radius:8px}
 #themeBtn{min-width:36px;font-size:17px}
+
+/* Dark theme hard overrides for legacy white surfaces */
+:root[data-theme="dark"] nav,
+:root[data-theme="dark"] nav button,
+:root[data-theme="dark"] .week,
+:root[data-theme="dark"] .month,
+:root[data-theme="dark"] .monthScroll,
+:root[data-theme="dark"] .scroll,
+:root[data-theme="dark"] .calendar,
+:root[data-theme="dark"] #calendar,
+:root[data-theme="dark"] .reportScroll,
+:root[data-theme="dark"] .reportTable,
+:root[data-theme="dark"] .reportTable tbody,
+:root[data-theme="dark"] .reportTable tr,
+:root[data-theme="dark"] .reportTable td,
+:root[data-theme="dark"] .nurseSummary table,
+:root[data-theme="dark"] .nurseSummary tbody,
+:root[data-theme="dark"] .nurseSummary tr,
+:root[data-theme="dark"] .nurseSummary td{
+  background:#1a2029!important;
+  color:#e7edf5!important;
+}
+:root[data-theme="dark"] nav button{
+  background:#222a35!important;
+  color:#cbd5e1!important;
+  border-color:#3a4656!important;
+}
+:root[data-theme="dark"] nav button:hover{background:#2d3745!important}
+:root[data-theme="dark"] nav button.active{
+  background:#376b82!important;
+  color:#fff!important;
+  border-color:#4f8da8!important;
+}
+:root[data-theme="dark"] .reportTable th,
+:root[data-theme="dark"] .nurseSummary th{
+  background:#202731!important;
+  color:#dbe4ef!important;
+}
+:root[data-theme="dark"] .reportRow:hover td{background:#242e3a!important}
+:root[data-theme="dark"] .month>div{background:#1a2029!important}
+:root[data-theme="dark"] .month>div.muted{background:#151a21!important}
