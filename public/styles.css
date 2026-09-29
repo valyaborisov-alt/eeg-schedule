@@ -50,14 +50,3 @@ main{padding-bottom:0!important;margin-bottom:0!important}
 
 /* Day view: breathing room above the first 08:00 tick */
 .dayView .time,.dayView .daycol{margin-top:10px}
-
-/* Desktop week: fit 08:00–20:00 + night into viewport without vertical scrolling */
-@media(min-width:701px){
-  body:has(.weekDesktop){overflow-y:hidden!important}
-  .weekDesktop{overflow-x:auto!important;overflow-y:hidden!important}
-  .weekDesktop .week{--slot:min(38px,calc((100vh - 245px)/24));}
-  .weekDesktop .time,.weekDesktop .daycol{height:calc(24 * var(--slot))!important}
-  .weekDesktop .slot{height:var(--slot)!important}
-  .weekDesktop .event{--scale:calc(var(--slot) / 42px)}
-  .nightrow{min-height:72px}
-}
