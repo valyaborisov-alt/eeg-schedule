@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Deploy Vercel persistent Google OAuth API",
-  "trigger": 5
+  "note": "Retry deploy Vercel persistent Google OAuth API",
+  "trigger": 6
 }
