@@ -149,3 +149,8 @@ main{padding-bottom:0!important;margin-bottom:0!important}
   body{padding-bottom:17px!important}
 }
 @media(max-width:700px){.weekBottomScroll{display:none!important}}
+
+@media(min-width:701px){
+  .weekBottomScroll{display:none!important}
+  .weekBottomScroll.active{display:block!important;position:fixed!important;left:22px!important;right:22px!important;bottom:0!important;z-index:1000!important}
+}
