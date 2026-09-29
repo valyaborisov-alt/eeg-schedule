@@ -162,3 +162,9 @@
 .nightrow .nightlabel{background:#18283d!important;color:#fff;border-color:#30445d!important}
 .nightrow select,.mobileNight select{background:#243851;color:#fff;border-color:#405774}
 .nightrow select option,.mobileNight select option{color:#111;background:#fff}
+
+/* Day nurse inline with current date */
+.dayNurseInline{display:inline-flex;align-items:center;gap:7px;margin-left:14px;vertical-align:middle;font-size:12px;font-weight:500;color:var(--muted)}
+.dayNurseInline>span{white-space:nowrap}
+.dayNurseInline select{min-width:160px;max-width:220px}
+@media(max-width:700px){.dayNurseInline{margin-left:8px;gap:4px}.dayNurseInline>span{display:none}.dayNurseInline select{min-width:120px;max-width:155px}}
