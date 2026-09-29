@@ -250,3 +250,17 @@
   overflow:hidden;
   text-overflow:ellipsis;
 }
+
+/* Research report */
+.reportView{display:grid;gap:18px;padding:4px 0 20px}
+.reportView section{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.reportView h3{margin:0;padding:11px 14px;border-bottom:1px solid var(--line);font-size:14px}
+.reportView h3 span{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:10px;background:#eef2f6;color:var(--muted);font-size:11px}
+.reportScroll{width:100%;overflow-x:auto}
+.reportTable{width:100%;border-collapse:collapse;font-size:13px}
+.reportTable th,.reportTable td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line)}
+.reportTable th{background:#f7f9fb;font-size:11px;white-space:nowrap;cursor:pointer;user-select:none}
+.reportTable th:hover{background:#eef2f6}
+.reportTable tr:last-child td{border-bottom:0}
+.reportTable td:nth-child(2),.reportTable td:nth-child(3){white-space:nowrap}
+@media(max-width:700px){.reportTable{min-width:620px}.reportView{gap:12px}.reportTable th,.reportTable td{padding:8px 9px}}
