@@ -50,3 +50,19 @@ main{padding-bottom:0!important;margin-bottom:0!important}
 
 /* Day view: breathing room above the first 08:00 tick */
 .dayView .time,.dayView .daycol{margin-top:10px}
+
+/* Weekly desktop: natural content height, body is the only vertical scroller */
+@media(min-width:701px){
+  .weekDesktop{
+    display:block!important;
+    height:max-content!important;
+    min-height:0!important;
+    max-height:none!important;
+    overflow-x:auto!important;
+    overflow-y:clip!important;
+  }
+  .weekDesktop>.week,.weekDesktop>.nightrow{position:relative}
+  #calendar,main{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important}
+  html{height:auto!important;min-height:100%!important;overflow-y:auto!important}
+  body{height:auto!important;min-height:100%!important;overflow-y:auto!important}
+}
