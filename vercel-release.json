@@ -1,5 +1,13 @@
 {
-  "release": "2026-09-29-vercel-sync",
+  "release": "2026-09-29",
   "purpose": "Trigger Vercel production deployment from current main",
-  "features": ["long-press edit mode","draft resize","OK apply","cancel","refined handles"]
+  "features": [
+    "long-press edit mode",
+    "draft resize",
+    "OK apply",
+    "cancel",
+    "refined handles"
+  ],
+  "note": "Release tested staging main to production",
+  "trigger": 1
 }
