@@ -87,3 +87,10 @@
 .event .eventBody{padding-left:7px}
 .daycol[data-room="1"]{background-color:#f7fcfd}
 .daycol[data-room="2"]{background-color:#faf8ff}
+
+/* Month view: distinguish rooms and emphasize night monitoring */
+.month .chip{position:relative;padding-left:9px}
+.month .roomChip1{background:#287f8f!important;color:#fff}
+.month .roomChip2{background:#675ca8!important;color:#fff}
+.month .miniMark{position:absolute;left:2px;top:2px;bottom:2px;width:4px;border-radius:3px}
+.monthNight{margin-top:3px;padding:3px 5px;border-radius:6px;background:#18283d;color:#fff;font-size:10px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
