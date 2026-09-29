@@ -228,3 +228,25 @@
 /* deployment refresh */
 
 /* production deployment retry */
+
+/* Keep event text clipped while edit handles may extend outside */
+.event .eventBody{
+  position:absolute!important;
+  left:7px!important;
+  right:3px!important;
+  top:3px!important;
+  bottom:3px!important;
+  overflow:hidden!important;
+  min-height:0!important;
+}
+.event.editing .eventBody{
+  bottom:8px!important;
+  overflow:hidden!important;
+}
+.event .eventBody>*{
+  max-width:100%;
+}
+.event .eventBody small,.event .eventBody b{
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
