@@ -130,3 +130,22 @@ main{padding-bottom:0!important;margin-bottom:0!important}
   .weekDesktop{display:block!important;width:100%!important;max-width:100%!important;overflow-x:scroll!important;overflow-y:visible!important}
   .weekDesktop.contentFit .weekTwoRooms,.weekDesktop.contentFit .nightTwoRooms{width:auto;max-width:none!important}
 }
+
+/* Horizontal week scrollbar pinned to bottom of viewport */
+@media(min-width:701px){
+  .weekDesktop{scrollbar-width:none!important}
+  .weekDesktop::-webkit-scrollbar{height:0!important}
+  .weekBottomScroll{
+    position:fixed;
+    left:22px;right:22px;bottom:0;
+    height:17px;
+    overflow-x:auto;overflow-y:hidden;
+    z-index:100;
+    background:#f4f7fb;
+    border-top:1px solid #dbe4ee;
+    display:none;
+  }
+  .weekBottomScrollInner{height:1px}
+  body{padding-bottom:17px!important}
+}
+@media(max-width:700px){.weekBottomScroll{display:none!important}}
