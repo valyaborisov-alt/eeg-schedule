@@ -168,3 +168,13 @@
 .dayNurseInline>span{white-space:nowrap}
 .dayNurseInline select{min-width:160px;max-width:220px}
 @media(max-width:700px){.dayNurseInline{margin-left:8px;gap:4px}.dayNurseInline>span{display:none}.dayNurseInline select{min-width:120px;max-width:155px}}
+
+/* Month view: explicit room 1 / room 2 sections, no event truncation */
+.monthDate{display:block;margin-bottom:3px}
+.monthRooms{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:3px;align-items:start}
+.monthRoom{min-width:0;border-radius:5px;padding:2px}
+.monthRoom.room1{background:#287f8f12}
+.monthRoom.room2{background:#675ca812}
+.monthRoomTitle{display:block;font-size:9px;font-weight:800;margin:0 2px 2px;color:var(--muted)}
+.monthRoom .chip{margin:2px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:700px){.monthRooms{grid-template-columns:1fr}.monthRoomTitle{font-size:8px}}
