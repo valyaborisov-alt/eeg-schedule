@@ -395,3 +395,24 @@
 :root[data-theme="dark"] .reportRow:hover td{background:#242e3a!important}
 :root[data-theme="dark"] .month>div{background:#1a2029!important}
 :root[data-theme="dark"] .month>div.muted{background:#151a21!important}
+
+/* Complete dark calendar surface overrides */
+:root[data-theme="dark"] header{background:#171d25f2!important}
+:root[data-theme="dark"] .time{background:#171d25!important}
+:root[data-theme="dark"] .daycol{
+  background:repeating-linear-gradient(to bottom,#1a2029 0,#1a2029 calc(var(--slot) - 1px),#303947 calc(var(--slot) - 1px),#303947 var(--slot))!important;
+}
+:root[data-theme="dark"] .daycol[data-room="1"],
+:root[data-theme="dark"] .daycol[data-room="2"]{background:repeating-linear-gradient(to bottom,#1a2029 0,#1a2029 calc(var(--slot) - 1px),#303947 calc(var(--slot) - 1px),#303947 var(--slot))!important}
+:root[data-theme="dark"] .dayView,
+:root[data-theme="dark"] .mobileSchedule{background:#1a2029!important;border-color:#303947!important}
+:root[data-theme="dark"] .mobileDays button,
+:root[data-theme="dark"] .roomTabs button{background:#222a35!important;color:#dbe4ef!important}
+:root[data-theme="dark"] .mobileDays button.active,
+:root[data-theme="dark"] .roomTabs button.active{background:#376b82!important;color:#fff!important}
+:root[data-theme="dark"] .dayNurse,
+:root[data-theme="dark"] .dayNurseInline select{background:#202731!important;color:#e7edf5!important;border-color:#3a4656!important}
+:root[data-theme="dark"] label{color:#aeb9c7!important}
+:root[data-theme="dark"] dialog form{background:#1a2029!important;color:#e7edf5!important}
+:root[data-theme="dark"] .monthFitToggle,
+:root[data-theme="dark"] .weekFitToggle{color:#aeb9c7!important}
