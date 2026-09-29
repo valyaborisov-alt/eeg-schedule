@@ -149,3 +149,16 @@
 .dayNurse span{font-size:12px;font-weight:700;color:var(--muted);white-space:nowrap}
 .dayNurse select{min-width:180px}
 @media(max-width:700px){.dayNurse{margin-left:0;max-width:100%;width:100%;justify-content:space-between}.dayNurse select{min-width:0;flex:1}}
+
+/* Dark night band in week/day views, matching month night styling */
+.nightrow,.mobileNight{
+  background:#18283d!important;
+  color:#fff;
+  border-radius:9px;
+}
+.nightrow{padding:7px 6px}
+.mobileNight{padding:7px 6px;margin-top:6px}
+.nightrow .night,.mobileNight .night{background:#18283d!important;color:#fff}
+.nightrow .nightlabel{background:#18283d!important;color:#fff;border-color:#30445d!important}
+.nightrow select,.mobileNight select{background:#243851;color:#fff;border-color:#405774}
+.nightrow select option,.mobileNight select option{color:#111;background:#fff}
