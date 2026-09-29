@@ -97,3 +97,14 @@ main{padding-bottom:0!important;margin-bottom:0!important}
   .dayResize{right:-7px;width:14px}
   .dayResize:after{left:6px}
 }
+
+/* Weekly width modes */
+.weekFitToggle{display:flex;flex-direction:row;align-items:center;gap:7px;width:max-content;margin:0 0 8px 2px;font-size:12px;color:var(--muted);user-select:none}
+.weekFitToggle input{width:16px;height:16px;margin:0}
+@media(min-width:701px){
+  .weekDesktop{width:100%;overflow-x:auto!important;overflow-y:visible!important}
+  .weekDesktop.windowFit .weekTwoRooms,.weekDesktop.windowFit .nightTwoRooms{width:100%!important;min-width:0!important}
+  .weekDesktop.contentFit .weekTwoRooms,.weekDesktop.contentFit .nightTwoRooms{width:max-content!important;min-width:max-content!important}
+  .weekDesktop.contentFit{overflow-x:auto!important}
+}
+@media(max-width:700px){.weekFitToggle{display:none}}
