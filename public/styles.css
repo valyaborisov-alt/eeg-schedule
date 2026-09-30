@@ -487,3 +487,15 @@
 #syncRangeForm{padding:20px}
 .syncHint{font-size:12px;line-height:1.45;color:var(--muted);margin:14px 0 2px}
 :root[data-theme="dark"] #syncRangeForm{background:#1a2029;color:#e7edf5}
+
+/* Admin user management */
+#usersDialog{width:min(680px,calc(100% - 24px));max-width:680px}
+.usersPanel{padding:20px}
+.addUserForm{display:grid;grid-template-columns:minmax(180px,1fr) 150px auto;gap:8px;margin:12px 0 16px}
+.usersTable{width:100%;border-collapse:collapse;font-size:13px}
+.usersTable th,.usersTable td{padding:8px;border-bottom:1px solid var(--line);text-align:left}
+.usersTable th:nth-child(2),.usersTable td:nth-child(2){width:155px}
+.usersTable th:last-child,.usersTable td:last-child{width:85px}
+.usersTable small{color:var(--muted)}
+:root[data-theme="dark"] .usersPanel,.usersTable{background:#1a2029;color:#e7edf5}
+@media(max-width:600px){.addUserForm{grid-template-columns:1fr}.usersTable th:nth-child(2),.usersTable td:nth-child(2){width:auto}}
