@@ -1,5 +1,5 @@
 const CLIENT='7594138844-8nbveq6j7v7s4a88e0ikcp5tcgc2oi0u.apps.googleusercontent.com';
-const SCOPES='https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/spreadsheets.readonly';
+const SCOPES='openid email profile https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/spreadsheets.readonly';
 const te=new TextEncoder(),td=new TextDecoder();
 function b64(a){return btoa(String.fromCharCode(...new Uint8Array(a))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
 function ub64(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return Uint8Array.from(atob(s),c=>c.charCodeAt(0))}
@@ -8,6 +8,9 @@ async function seal(text,secret){let iv=crypto.getRandomValues(new Uint8Array(12
 async function open(v,secret){let [a,b]=String(v||'').split('.');if(!a||!b)return'';try{return td.decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:ub64(a)},await key(secret),ub64(b)))}catch{return''}}
 function cookie(req,n){let m=(req.headers.get('Cookie')||'').match(new RegExp('(?:^|;\\s*)'+n+'=([^;]+)'));return m?decodeURIComponent(m[1]):''}
 function json(x,s=200,h={}){return new Response(JSON.stringify(x),{status:s,headers:{'content-type':'application/json;charset=utf-8',...h}})}
+function allowed(env){try{return JSON.parse(env.ALLOWED_USERS||'{}')}catch{return{}}}
+async function identity(refresh,env){if(!refresh)return null;let r=await fetch('https://oauth2.googleapis.com/token',{method:'POST',headers:{'content-type':'application/x-www-form-urlencoded'},body:new URLSearchParams({client_id:CLIENT,client_secret:env.GOOGLE_CLIENT_SECRET,refresh_token:refresh,grant_type:'refresh_token'})}),j=await r.json();if(!r.ok||!j.access_token)return null;let q=await fetch('https://www.googleapis.com/oauth2/v3/userinfo',{headers:{Authorization:'Bearer '+j.access_token}}),p=await q.json();if(!q.ok||!p.email)return null;let role=allowed(env)[String(p.email).toLowerCase()]||null;return{email:p.email,name:p.name||p.email,picture:p.picture||'',role,access_token:j.access_token}}
+
 export default {
  async fetch(request,env){
   let u=new URL(request.url),origin=u.origin,redirect=origin+'/api/google/callback';
@@ -25,12 +28,12 @@ export default {
    let enc=await seal(j.refresh_token,env.COOKIE_SECRET);
    return new Response(null,{status:302,headers:{Location:'/?google=connected','Set-Cookie':'eeg_google_refresh='+encodeURIComponent(enc)+'; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=15552000'}});
   }
-  if(u.pathname==='/api/google/token'){
+  if(u.pathname==='/api/google/session'||u.pathname==='/api/google/token'){
    if(!env.GOOGLE_CLIENT_SECRET||!env.COOKIE_SECRET)return json({connected:false,error:'server_not_configured'},503);
-   let enc=cookie(request,'eeg_google_refresh'),refresh=await open(enc,env.COOKIE_SECRET);if(!refresh)return json({connected:false},401);
-   let r=await fetch('https://oauth2.googleapis.com/token',{method:'POST',headers:{'content-type':'application/x-www-form-urlencoded'},body:new URLSearchParams({client_id:CLIENT,client_secret:env.GOOGLE_CLIENT_SECRET,refresh_token:refresh,grant_type:'refresh_token'})}),j=await r.json();
-   if(!r.ok)return json({connected:false,error:j.error||'refresh_failed'},401);
-   return json({connected:true,access_token:j.access_token,expires_in:j.expires_in});
+   let refresh=await open(cookie(request,'eeg_google_refresh'),env.COOKIE_SECRET),p=await identity(refresh,env);if(!p)return json(u.pathname.endsWith('/session')?{authenticated:false}:{connected:false},401);
+   if(!p.role)return json({authenticated:true,authorized:false,connected:false,email:p.email,error:'not_authorized'},403);
+   if(u.pathname.endsWith('/session'))return json({authenticated:true,authorized:true,email:p.email,name:p.name,picture:p.picture,role:p.role});
+   return json({connected:true,access_token:p.access_token,email:p.email,name:p.name,role:p.role});
   }
   if(u.pathname==='/api/google/logout')return json({ok:true},200,{'Set-Cookie':'eeg_google_refresh=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0'});
   return env.ASSETS.fetch(request);
