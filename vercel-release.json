@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Hotfix range synchronization dialog",
-  "trigger": 11
+  "note": "Fix range sync 400 and Google event upsert",
+  "trigger": 12
 }
