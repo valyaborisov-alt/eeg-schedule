@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Fix birthdate mistaken for study time in September sync",
-  "trigger": 15
+  "note": "Admin user management UI and API",
+  "trigger": 16
 }
