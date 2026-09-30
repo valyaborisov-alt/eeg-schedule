@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Fix range sync 400 and Google event upsert",
-  "trigger": 12
+  "note": "Fix September import time payload and stray minute prefixes",
+  "trigger": 13
 }
