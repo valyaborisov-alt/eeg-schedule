@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Fix September import time payload and stray minute prefixes",
-  "trigger": 13
+  "note": "Fix range sync stale Google IDs and detailed Calendar errors",
+  "trigger": 14
 }
