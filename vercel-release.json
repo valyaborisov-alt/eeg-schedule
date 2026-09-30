@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Admin user management UI and API",
-  "trigger": 16
+  "note": "Hotfix admin users dialog",
+  "trigger": 17
 }
