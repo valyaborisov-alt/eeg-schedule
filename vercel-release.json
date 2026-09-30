@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Hotfix admin synchronization button visibility",
-  "trigger": 10
+  "note": "Hotfix range synchronization dialog",
+  "trigger": 11
 }
