@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Vercel primary: multi-user access and date-range synchronization",
-  "trigger": 9
+  "note": "Hotfix admin synchronization button visibility",
+  "trigger": 10
 }
