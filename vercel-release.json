@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Fix range sync stale Google IDs and detailed Calendar errors",
-  "trigger": 14
+  "note": "Fix birthdate mistaken for study time in September sync",
+  "trigger": 15
 }
