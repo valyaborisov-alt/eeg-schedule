@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Retry Vercel OAuth API release",
-  "trigger": 8
+  "note": "Vercel primary: multi-user access and date-range synchronization",
+  "trigger": 9
 }
