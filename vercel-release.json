@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Calendar night payload diagnostics",
-  "trigger": 25
+  "note": "Definitive night next-day calculation fix",
+  "trigger": 26
 }
