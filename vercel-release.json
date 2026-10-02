@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Fix Calendar empty time range for night studies",
-  "trigger": 23
+  "note": "Force fresh JS assets after night save hotfix",
+  "trigger": 24
 }
