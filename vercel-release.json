@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Fix server Calendar save module import",
-  "trigger": 28
+  "note": "Force night studies to next calendar day server-side",
+  "trigger": 29
 }
