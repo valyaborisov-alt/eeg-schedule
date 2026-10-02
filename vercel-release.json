@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Force night studies to next calendar day server-side",
-  "trigger": 29
+  "note": "Diagnose production Calendar next-day function",
+  "trigger": 30
 }
