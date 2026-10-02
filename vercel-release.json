@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Fix night patient persistence and require successful Calendar save",
-  "trigger": 22
+  "note": "Fix Calendar empty time range for night studies",
+  "trigger": 23
 }
