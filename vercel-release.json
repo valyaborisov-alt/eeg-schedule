@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Server-side Calendar save with explicit Moscow offset",
-  "trigger": 27
+  "note": "Fix server Calendar save module import",
+  "trigger": 28
 }
