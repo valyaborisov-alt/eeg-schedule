@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Force fresh JS assets after night save hotfix",
-  "trigger": 24
+  "note": "Calendar night payload diagnostics",
+  "trigger": 25
 }
