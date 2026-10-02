@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Google logout and current-month sync default",
-  "trigger": 20
+  "note": "Synchronize nurse deletion/rename with assignments and reports",
+  "trigger": 21
 }
