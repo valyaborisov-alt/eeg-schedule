@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Public OAuth branding, privacy and terms pages",
-  "trigger": 18
+  "note": "Critical timezone fix: render Google Calendar in Europe/Moscow",
+  "trigger": 19
 }
