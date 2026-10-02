@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Diagnose production Calendar next-day function",
-  "trigger": 30
+  "note": "Root fix: preserve night flag on newly created night studies",
+  "trigger": 31
 }
