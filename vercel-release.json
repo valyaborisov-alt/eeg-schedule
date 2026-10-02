@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Synchronize nurse deletion/rename with assignments and reports",
-  "trigger": 21
+  "note": "Fix night patient persistence and require successful Calendar save",
+  "trigger": 22
 }
