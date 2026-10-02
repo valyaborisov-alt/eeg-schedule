@@ -11,12 +11,10 @@ function redraw(){
  list.innerHTML=a.length?a.map((n,i)=>'<div class="nurseRow"><input data-edit="'+i+'" value="'+esc(n)+'"><button type="button" data-del="'+i+'" title="Удалить">×</button></div>').join(''):'<p class="emptyNurses">Список пока пуст</p>';
  list.querySelectorAll('[data-edit]').forEach(el=>el.addEventListener('change',()=>{
    let a=get(),i=Number(el.dataset.edit),old=a[i],nw=el.value.trim();if(!nw){el.value=old;return}
-   for(let j=0;j<localStorage.length;j++){let k=localStorage.key(j);if(k&&k.startsWith('n:')&&localStorage.getItem(k)===old)localStorage.setItem(k,nw)}
-   a[i]=nw;save(a);redraw();window.dispatchEvent(new Event('nurses-changed'));
+   let changes=[];for(let j=0;j<localStorage.length;j++){let k=localStorage.key(j);if(k&&k.startsWith('n:')&&localStorage.getItem(k)===old){localStorage.setItem(k,nw);let m=k.match(/^n:(\d{4}-\d{2}-\d{2})(d|n)$/);if(m)changes.push([m[1],m[2],nw])}}a[i]=nw;save(a);Promise.all(changes.map(x=>window.googleSaveNurse?.(...x))).finally(()=>{redraw();window.dispatchEvent(new Event('nurses-changed'))});
  }));
  list.querySelectorAll('[data-del]').forEach(el=>el.addEventListener('click',()=>{
-   let a=get(),i=Number(el.dataset.del),n=a[i];if(!confirm('Удалить «'+n+'» из справочника? Назначения в расписании сохранятся.'))return;
-   a.splice(i,1);save(a);redraw();window.dispatchEvent(new Event('nurses-changed'));
+   let a=get(),i=Number(el.dataset.del),n=a[i];if(!confirm('Удалить «'+n+'» из справочника и из всех назначений в расписании?'))return;let changes=[];for(let j=localStorage.length-1;j>=0;j--){let k=localStorage.key(j);if(k&&k.startsWith('n:')&&localStorage.getItem(k)===n){let m=k.match(/^n:(\d{4}-\d{2}-\d{2})(d|n)$/);localStorage.removeItem(k);if(m)changes.push([m[1],m[2],''])}}a.splice(i,1);save(a);Promise.all(changes.map(x=>window.googleSaveNurse?.(...x))).finally(()=>{redraw();window.dispatchEvent(new Event('nurses-changed'))});
  }));
 }
 btn.addEventListener('click',()=>{redraw();dlg.showModal()});
