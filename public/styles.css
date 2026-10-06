@@ -503,3 +503,12 @@
 /* Monthly night studies: K1 above K2 */
 .monthNight{display:flex;flex-direction:column;gap:2px}
 .monthNightRoom{display:block;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* Night rooms stacked vertically: K1 then K2 */
+.night{display:grid!important;grid-template-columns:1fr!important;grid-template-rows:auto auto auto!important;gap:4px!important;align-content:start}
+.night>.nightRoom{width:100%!important;min-width:0!important;box-sizing:border-box}
+.night>.nightRoom[data-room="1"]{grid-row:1}
+.night>.nightRoom[data-room="2"]{grid-row:2}
+.night>select[data-n]{grid-row:3;width:100%;min-width:0}
+.threeDayNight .night{display:grid!important;grid-template-columns:1fr!important;grid-template-rows:auto auto auto!important;gap:4px!important;min-height:0!important}
+.mobileNight .night{display:grid!important;grid-template-columns:1fr!important;grid-template-rows:auto auto auto!important}
