@@ -499,3 +499,7 @@
 .usersTable small{color:var(--muted)}
 :root[data-theme="dark"] .usersPanel,.usersTable{background:#1a2029;color:#e7edf5}
 @media(max-width:600px){.addUserForm{grid-template-columns:1fr}.usersTable th:nth-child(2),.usersTable td:nth-child(2){width:auto}}
+
+/* Monthly night studies: K1 above K2 */
+.monthNight{display:flex;flex-direction:column;gap:2px}
+.monthNightRoom{display:block;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
