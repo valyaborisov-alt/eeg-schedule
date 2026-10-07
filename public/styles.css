@@ -512,3 +512,11 @@
 .night>select[data-n]{grid-row:3;width:100%;min-width:0}
 .threeDayNight .night{display:grid!important;grid-template-columns:1fr!important;grid-template-rows:auto auto auto!important;gap:4px!important;min-height:0!important}
 .mobileNight .night{display:grid!important;grid-template-columns:1fr!important;grid-template-rows:auto auto auto!important}
+
+/* Month font-size controls */
+.monthFontControls{display:inline-flex;align-items:center;gap:4px;margin-left:8px;vertical-align:middle}
+.monthFontControls button{min-width:32px;padding:3px 7px;font-size:12px}
+.monthFontControls b{min-width:42px;text-align:center;font-size:11px;color:var(--muted)}
+.month .chip,.month .monthNight,.month .monthRoomLabel{font-size:var(--month-font-size,12px)!important}
+.month .monthDate{font-size:calc(var(--month-font-size,12px) + 2px)!important}
+@media(max-width:700px){.monthFontControls{margin-left:4px}.monthFontControls button{min-width:29px;padding:3px 5px}.monthFontControls b{min-width:36px}}
