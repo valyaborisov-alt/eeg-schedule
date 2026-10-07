@@ -16,8 +16,10 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Install Yandex Cloud CLI
         run: |
@@ -29,20 +31,25 @@ jobs:
           YC_SA_JSON_CREDENTIALS: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
         run: |
           printf '%s' "$YC_SA_JSON_CREDENTIALS" > "$RUNNER_TEMP/yc-key.json"
+
           yc config profile create github-actions
           yc config set service-account-key "$RUNNER_TEMP/yc-key.json"
           yc config set cloud-id "${{ secrets.YC_CLOUD_ID }}"
           yc config set folder-id "${{ secrets.YC_FOLDER_ID }}"
+          yc config set endpoint api.cloud.yandex.net:443
 
       - name: Deploy frontend to Object Storage
         run: |
-         yc storage s3 cp ./public s3://eeg-schedule-web --recursive
+          yc storage s3 cp ./public s3://eeg-schedule-web --recursive
 
       - name: Deploy backend function
         run: |
           cd yandex-function
+
           zip -qr "$RUNNER_TEMP/function.zip" .
+
           yc serverless function version create \
+            --endpoint api.cloud.yandex.net:443 \
             --function-id d4etbpt51h3f27skuc9o \
             --runtime nodejs22 \
             --entrypoint index.handler \
@@ -56,4 +63,16 @@ jobs:
 
       - name: Smoke test
         run: |
-          curl --fail --show-error --silent https://d5d5eedg829mo0b2umh8.g2n58e0c.apigw.yandexcloud.net/api/calendar/save
+          STATUS=$(curl \
+            --silent \
+            --show-error \
+            --output /dev/null \
+            --write-out "%{http_code}" \
+            "https://d5d5eedg829mo0b2umh8.g2n58e0c.apigw.yandexcloud.net/api/calendar/save")
+
+          echo "API returned HTTP $STATUS"
+
+          if [ "$STATUS" = "000" ] || [ "$STATUS" -ge 500 ]; then
+            echo "Smoke test failed"
+            exit 1
+          fi
