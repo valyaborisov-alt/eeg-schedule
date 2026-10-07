@@ -1,8 +1,12 @@
-name: Deploy to Yandex Cloud
+name: Deploy Yandex Cloud
 
 on:
   push:
     branches: [main]
+    paths:
+      - 'public/**'
+      - 'yandex-function/**'
+      - '.github/workflows/deploy-yandex.yml'
   workflow_dispatch:
 
 concurrency:
@@ -12,8 +16,6 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
       - uses: actions/checkout@v4
 
@@ -22,52 +24,33 @@ jobs:
           curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
           echo "$HOME/yandex-cloud/bin" >> "$GITHUB_PATH"
 
-      - name: Configure Yandex Cloud
+      - name: Authenticate Yandex Cloud
         env:
-          YC_SA_KEY_JSON: ${{ secrets.YC_SA_KEY_JSON }}
+          YC_SA_JSON_CREDENTIALS: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
         run: |
-          printf '%s' "$YC_SA_KEY_JSON" > "$RUNNER_TEMP/yc-key.json"
-          yc config profile create eeg-schedule
+          printf '%s' "$YC_SA_JSON_CREDENTIALS" > "$RUNNER_TEMP/yc-key.json"
+          yc config profile create github-actions
           yc config set service-account-key "$RUNNER_TEMP/yc-key.json"
+          yc config set cloud-id "${{ secrets.YC_CLOUD_ID }}"
           yc config set folder-id "${{ secrets.YC_FOLDER_ID }}"
 
-      - name: Install AWS CLI
-        run: pip install --quiet awscli
-
       - name: Deploy frontend to Object Storage
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.YC_S3_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.YC_S3_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: ru-central1
         run: |
-          aws --endpoint-url=https://storage.yandexcloud.net s3 sync public/ s3://eeg-schedule-web/ --delete
-
-      - name: Build Yandex function ZIP
-        run: |
-          mkdir -p .yandex-function
-          cp yandex/index.js .yandex-function/index.js
-          cp yandex/package.json .yandex-function/package.json
-          cd .yandex-function
-          zip -r ../yandex-function.zip .
+          yc storage s3 sync ./public s3://eeg-schedule-web --delete
 
       - name: Deploy backend function
-        env:
-          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-          COOKIE_SECRET: ${{ secrets.COOKIE_SECRET }}
-          ALLOWED_USERS: ${{ secrets.ALLOWED_USERS }}
-          PUBLIC_BASE_URL: https://d5d5eedg829mo0b2umh8.g2n58e0c.apigw.yandexcloud.net
         run: |
+          cd yandex-function
+          zip -qr "$RUNNER_TEMP/function.zip" .
           yc serverless function version create \
             --function-id d4etbpt51h3f27skuc9o \
             --runtime nodejs22 \
             --entrypoint index.handler \
             --memory 128m \
             --execution-timeout 10s \
-            --source-path yandex-function.zip \
-            --environment "GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET,COOKIE_SECRET=$COOKIE_SECRET,ALLOWED_USERS=$ALLOWED_USERS,PUBLIC_BASE_URL=$PUBLIC_BASE_URL"
+            --source-path "$RUNNER_TEMP/function.zip" \
+            --environment GOOGLE_CLIENT_SECRET="${{ secrets.GOOGLE_CLIENT_SECRET }}",COOKIE_SECRET="${{ secrets.COOKIE_SECRET }}",ALLOWED_USERS="${{ secrets.ALLOWED_USERS }}",PUBLIC_BASE_URL="https://d5d5eedg829mo0b2umh8.g2n58e0c.apigw.yandexcloud.net"
 
-      - name: Verify production
+      - name: Smoke test
         run: |
-          sleep 5
-          curl --fail --show-error --silent \
-            https://d5d5eedg829mo0b2umh8.g2n58e0c.apigw.yandexcloud.net/api/calendar/save
+          curl --fail --show-error --silent https://d5d5eedg829mo0b2umh8.g2n58e0c.apigw.yandexcloud.net/api/calendar/save
