@@ -41,6 +41,11 @@ jobs:
       - name: Deploy frontend to Object Storage
         run: |
           yc storage s3 cp ./public s3://eeg-schedule-web --recursive
+          yc storage s3 cp ./public/index.html s3://eeg-schedule-web/index.html --content-type "text/html; charset=utf-8" --cache-control "no-cache, no-store, must-revalidate"
+          yc storage s3 cp ./public/styles.css s3://eeg-schedule-web/styles.css --content-type "text/css"
+          yc storage s3 cp ./public/app.js s3://eeg-schedule-web/app.js --content-type "application/javascript"
+          yc storage s3 cp ./public/google.js s3://eeg-schedule-web/google.js --content-type "application/javascript"
+          yc storage s3 cp ./public/nurses.js s3://eeg-schedule-web/nurses.js --content-type "application/javascript"
 
       - name: Deploy backend function
         run: |
