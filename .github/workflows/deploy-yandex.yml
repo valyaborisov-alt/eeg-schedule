@@ -36,7 +36,7 @@ jobs:
 
       - name: Deploy frontend to Object Storage
         run: |
-          yc storage s3 sync ./public s3://eeg-schedule-web --delete
+          yc storage s3 sync ./public s3://eeg-schedule-web --recursive
 
       - name: Deploy backend function
         run: |
