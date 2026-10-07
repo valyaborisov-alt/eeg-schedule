@@ -8,6 +8,6 @@
     "cancel",
     "refined handles"
   ],
-  "note": "Root fix: preserve night flag on newly created night studies",
-  "trigger": 31
+  "note": "Month view adjustable font size",
+  "trigger": 32
 }
