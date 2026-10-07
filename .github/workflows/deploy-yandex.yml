@@ -48,6 +48,10 @@ jobs:
           yc storage s3 cp ./public/nurses.js s3://eeg-schedule-web/nurses.js --content-type "application/javascript"
 
       - name: Deploy backend function
+        env:
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          COOKIE_SECRET: ${{ secrets.COOKIE_SECRET }}
+          ALLOWED_USERS: ${{ secrets.ALLOWED_USERS }}
         run: |
           cd yandex-function
 
@@ -61,9 +65,9 @@ jobs:
             --memory 128m \
             --execution-timeout 10s \
             --source-path "$RUNNER_TEMP/function.zip" \
-            --environment "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" \
-            --environment "COOKIE_SECRET=${{ secrets.COOKIE_SECRET }}" \
-            --environment "ALLOWED_USERS=${{ secrets.ALLOWED_USERS }}" \
+            --environment "GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET" \
+            --environment "COOKIE_SECRET=$COOKIE_SECRET" \
+            --environment "ALLOWED_USERS=$ALLOWED_USERS" \
             --environment "PUBLIC_BASE_URL=https://d5d5eedg829mo0b2umh8.g2n58e0c.apigw.yandexcloud.net"
 
       - name: Smoke test
